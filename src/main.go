@@ -1,9 +1,13 @@
 package main
 
-import (
-	"fmt"
-)
+import "github.com/charmbracelet/huh"
 
 func main() {
-	fmt.Println("Hello, World!")
+	form := huh.NewForm(
+		huh.NewGroup(
+			huh.NewNote().Title("note 1"),
+		),
+	)
+
+	form.Run()
 }
