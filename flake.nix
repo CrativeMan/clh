@@ -25,13 +25,8 @@
       devShells = forEachSupportedSystem ({ pkgs }: {
         default = pkgs.mkShell {
           packages = with pkgs; [
-            # go (version is specified by overlay)
             go
-
-            # goimports, godoc, etc.
             gotools
-
-            # https://github.com/golangci/golangci-lint
             golangci-lint
           ];
         };
@@ -40,11 +35,11 @@
       packages.x86_64-linux.default = pkgs.buildGoModule
         rec {
           pname = "clh";
-          version = "0.1.0";
+          version = "0.2.0";
 
           src = ./src;
 
-          vendorHash = "sha256-HZDEbwXAoAiEINxWkGmMUzXWnGk0MQ8phwo4HSBmd0c=";
+
         };
     };
 }
