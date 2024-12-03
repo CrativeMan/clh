@@ -22,10 +22,7 @@ binFolder:
 run:
 	./$(BINFOLDER)/$(BINARY_NAME)
 
-tidy:
-	cd $(SRCFOLDER) && $(GOMOD) tidy
-
 mod:
-	$(GOMOD) tidy
+	cd $(SRCFOLDER) && $(GOMOD) tidy
 
 .PHONY: all build test clean run mod
