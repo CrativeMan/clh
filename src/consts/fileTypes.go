@@ -1,4 +1,4 @@
-package icons
+package consts
 
 var FileTypeIcons = map[string]string{
 	".c":          "\033[34m \033[0m",

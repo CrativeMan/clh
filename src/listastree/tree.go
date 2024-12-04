@@ -1,14 +1,12 @@
 package listastree
 
 import (
-	"clh/icons"
+	"clh/consts"
 	"fmt"
 	"io/fs"
 	"log"
 	"os"
 	"path/filepath"
-
-	"github.com/fatih/color"
 )
 
 func walk(path string, dashes int, spaces int, level int) {
@@ -56,16 +54,18 @@ func printSpacing(spaces int, level int, i int, entries []fs.DirEntry, dashes in
 
 func printFile(e fs.DirEntry) {
 	if e.IsDir() {
-		color.Yellow(fmt.Sprintf("%s %s", icons.FileTypeIcons["directory"], e.Name()))
+		fmt.Printf("%s%s %s%s\n", consts.FileTypeIcons["directory"], consts.YELLOW, e.Name(), consts.DEFAULT)
 	} else {
-		icon := icons.FileTypeIcons[filepath.Ext(e.Name())]
+		icon := consts.FileTypeIcons[filepath.Ext(e.Name())]
 		if len(icon) == 0 {
-			icon = icons.FileTypeIcons["other"]
+			icon = consts.FileTypeIcons["other"]
 		}
-		color.Cyan(fmt.Sprintf("%s %s", icon, e.Name()))
+		fmt.Printf("%s%s %s%s\n", icon, consts.CYAN, e.Name(), consts.DEFAULT)
 	}
 }
 
 func RunTree() {
+	wd, _ := os.Getwd()
+	fmt.Printf("%s%s%s\n", consts.CYAN, wd, consts.DEFAULT)
 	walk(".", 3, 4, 0)
 }

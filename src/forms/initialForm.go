@@ -1,7 +1,7 @@
 package forms
 
 import (
-	"clh/icons"
+	"clh/consts"
 	"fmt"
 
 	"github.com/charmbracelet/huh"
@@ -12,7 +12,7 @@ func InitialForm() (int, error) {
 	initialForm := huh.NewForm(
 		huh.NewGroup(
 			huh.NewSelect[int]().Title("Select the option you want to execute").Options(
-				huh.NewOption(fmt.Sprintf("%s Tree", icons.FileTypeIcons[".c"]), 0),
+				huh.NewOption(fmt.Sprintf("%s Tree", consts.FileTypeIcons[".c"]), 0),
 			).Value(&utype),
 		),
 	)
