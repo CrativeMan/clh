@@ -1,6 +1,7 @@
 package main
 
 import (
+	colorconverter "clh/colorConverter"
 	"clh/forms"
 	"clh/listastree"
 	"log"
@@ -15,6 +16,8 @@ func main() {
 	switch utype {
 	case 0:
 		listastree.RunTree()
+	case 1:
+		colorconverter.Init()
 	default:
 		log.Println("No util know like that")
 	}
