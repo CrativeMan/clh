@@ -2,6 +2,7 @@ package listastree
 
 import (
 	"clh/consts"
+	"clh/forms"
 	"fmt"
 	"io/fs"
 	"log"
@@ -9,10 +10,14 @@ import (
 	"path/filepath"
 )
 
-func walk(path string, dashes int, spaces int, level int) {
+func walk(maxDepth int, path string, dashes int, spaces int, level int) {
 	entries, err := os.ReadDir(path)
 	if err != nil {
 		log.Fatal(err)
+	}
+
+	if maxDepth > 0 && level >= maxDepth {
+		return
 	}
 
 	for i, e := range entries {
@@ -24,7 +29,7 @@ func walk(path string, dashes int, spaces int, level int) {
 
 		if e.IsDir() {
 			printFile(e)
-			walk(path+"/"+e.Name(), dashes, spaces, level+1)
+			walk(maxDepth, path+"/"+e.Name(), dashes, spaces, level+1)
 			continue
 		} else {
 			printFile(e)
@@ -67,5 +72,6 @@ func printFile(e fs.DirEntry) {
 func RunTree() {
 	wd, _ := os.Getwd()
 	fmt.Printf("%s%s%s\n", consts.CYAN, wd, consts.DEFAULT)
-	walk(".", 3, 4, 0)
+	maxLevel, _ := forms.TreeForm()
+	walk(maxLevel, ".", 3, 4, 0)
 }
