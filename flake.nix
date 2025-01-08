@@ -35,7 +35,7 @@
       packages.x86_64-linux.default = pkgs.buildGoModule
         rec {
           pname = "clh";
-          version = "2.0.0";
+          version = "2.1.0";
 
           src = ./src;
 
