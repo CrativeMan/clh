@@ -114,4 +114,5 @@ var FileTypeIcons = map[string]string{
 	"other":       "\033[1m \033[0m",
 	"symlink":     "\033[36m \033[0m",
 	"symlink_dir": "\033[36;1m \033[0m",
+	".rad":        "☢️",
 }
