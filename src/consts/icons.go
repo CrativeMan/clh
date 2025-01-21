@@ -1,6 +1,6 @@
 package consts
 
-var FileTypeIcons = map[string]string{
+var IconMap = map[string]string{
 	".c":          "\033[34m \033[0m",
 	".cpp":        "\033[34m \033[0m",
 	".cs":         "\033[34m󰌛 \033[0m",
@@ -116,4 +116,10 @@ var FileTypeIcons = map[string]string{
 	"symlink_dir": "\033[36;1m \033[0m",
 	".rad":        "☢️",
 	"book":        "\033[34m🕮 \033[0m",
+}
+
+func TestIconMap() {
+	for k, v := range IconMap {
+		println(k, v)
+	}
 }

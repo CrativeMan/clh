@@ -59,11 +59,11 @@ func printSpacing(spaces int, level int, i int, entries []fs.DirEntry, dashes in
 
 func printFile(e fs.DirEntry) {
 	if e.IsDir() {
-		fmt.Printf("%s%s %s%s\n", consts.FileTypeIcons["directory"], consts.YELLOW, e.Name(), consts.DEFAULT)
+		fmt.Printf("%s%s %s%s\n", consts.IconMap["directory"], consts.YELLOW, e.Name(), consts.DEFAULT)
 	} else {
-		icon := consts.FileTypeIcons[filepath.Ext(e.Name())]
+		icon := consts.IconMap[filepath.Ext(e.Name())]
 		if len(icon) == 0 {
-			icon = consts.FileTypeIcons["other"]
+			icon = consts.IconMap["other"]
 		}
 		fmt.Printf("%s%s %s%s\n", icon, consts.CYAN, e.Name(), consts.DEFAULT)
 	}
