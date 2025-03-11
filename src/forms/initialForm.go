@@ -3,11 +3,12 @@ package forms
 import (
 	"clh/consts"
 	"fmt"
+	"log"
 
 	"github.com/charmbracelet/huh"
 )
 
-func InitialForm() (int, error) {
+func InitialForm() int {
 	var utype int
 	initialForm := huh.NewForm(
 		huh.NewGroup(
@@ -20,10 +21,15 @@ func InitialForm() (int, error) {
 	)
 
 	err := initialForm.Run()
-	return utype, err
+
+	if err != nil {
+		log.Fatalf("[ERROR] trying to run initial form with error:\n%v", err.Error())
+	}
+
+	return utype
 }
 
-func DebugForm() (int, error) {
+func DebugForm() int {
 	var utype int
 	initialForm := huh.NewForm(
 		huh.NewGroup(
@@ -34,5 +40,9 @@ func DebugForm() (int, error) {
 	)
 
 	err := initialForm.Run()
-	return utype, err
+
+	if err != nil {
+		log.Fatalf("[ERROR] trying to run debug form with error:\n%v", err.Error())
+	}
+	return utype
 }
